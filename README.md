@@ -15,7 +15,7 @@ Para esta primera iteracioﾌ］ los libros estaraﾌ］ disponibles (paﾌ“ina por paﾌ
 
 ## Reglas
 
-- Use el lenguaje de programacioﾌ］ en el que se sienta maﾌ《 confortable.
+- El lenguaje de programaciﾃｳn a utilizar para esta prueba debe ser PHP.
 - No haga uso de ninguﾌ］ framework, un buen desarrollador debe saber seleccionar sus herramientas y ponerlas a funcionar en conjunto.
 - El uso de libreriﾌ∥s de terceros es permitido y alentado.
 - Haga uso de .gitignore, evite al maﾌ』imo incluir archivos innecesarios. 
