@@ -15,8 +15,13 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $i
 
 // database configuration parameters
 $conn = array(
-    'driver' => 'pdo_mysql',
-    'path' => __DIR__ . '/db.mysql',
+    'driver' => 'pdo_pgsql',
+    'path' => __DIR__ . '/db.pgsql',
+    'host' => '127.0.0.1',
+    'database' => 'library',
+    'user' => 'carlosgomez',
+    'password' => 'postgres',
+    'port' => '5432'
 );
 
 // obtaining the entity manager
