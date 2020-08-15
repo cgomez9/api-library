@@ -1,15 +1,14 @@
 {
     "require": {
-        "ext-json" : "*",
+        "doctrine/orm": "^2.6.2",
         "symfony/yaml": "^4.3",
-        "ext-pdo": "*",
         "pecee/simple-router": "4.2.0.6",
+        "ext-pdo": "*",
+        "ext-json" : "*",
         "ext-curl": "*"
     },
     "autoload": {
-        "psr-4": {
-            "App\\":"app/"
-        }
+        "psr-0": {"": "src/"}
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3"
