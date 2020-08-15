@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+    ports:
+      - "33066:3306"
+    volumes:
+      - "${DB_DATA_PATH}:/var/lib/mysql"
+    networks:
+      - back
+    restart: always
+
+  php-fpm:
+    image: php-fpm
+    build:
+      context: "./php-fpm"
+      dockerfile: "Dockerfile"
+    volumes:
+      - "${API_PATH}:/app"
+      - "./php-fpm/php.ini:/usr/local/etc/php/conf.d/app-php.ini:ro"
+    networks:
+      - back
+    restart: always
+
+  nginx:
+    image: "nginx:alpine"
+    ports:
+      - "8000:80"
+      - "4433:443"
+    volumes:
+      - "${API_PATH}:/app"
+      - "./nginx/website.conf:/etc/nginx/conf.d/default.conf:ro"
+    depends_on:
+      - "php-fpm"
+    networks:
+      - front
+      - back
+    restart: always
+  
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge  
+  
