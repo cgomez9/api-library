@@ -1,13 +1,17 @@
 <?php
 
+namespace App\Entity;
+
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="books")
  */
-class Book
+class Book implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -88,5 +92,14 @@ class Book
     public function setPages($pages)
     {
         $this->pages = $pages;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'name' => $this->getName(),
+            'cover' => $this->getCover(),
+            'pages' => $this->getPages()
+        ];
     }
 }
