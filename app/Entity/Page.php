@@ -1,12 +1,16 @@
 <?php
 
+namespace App\Entity;
+
+
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="pages")
  */
-class Page
+class Page implements JsonSerializable
 {
     /**
      * @var integer $id
@@ -61,5 +65,13 @@ class Page
     public function setBook(Book $book)
     {
         $this->book = $book;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'content' => $this->getContent(),
+            'book' => $this->getBook(),
+        ];
     }
 }
