@@ -1,4 +1,5 @@
 <?php
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,8 +27,8 @@ class Page
     /**
      * @var Book $book
      *
-     * @ORM\@ManyToOne(targetEntity="Book", inversedBy="pages")
-     * @ORM\@JoinColumn(name="book_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Book", inversedBy="pages")
+     * @ORM\JoinColumn(name="book_id", referencedColumnName="id")
      */
     protected $book;
 
