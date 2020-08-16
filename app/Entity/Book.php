@@ -1,13 +1,19 @@
 <?php
 
+namespace App\Entity;
+
+
+use App\Utils\ApiUtils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
+use function PHPSTORM_META\map;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="books")
  */
-class Book
+class Book implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -29,7 +35,7 @@ class Book
     /**
      * @var Page[]
      *
-     * @ORM\OneToMany(targetEntity="Page", mappedBy="book")
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="book")
      */
     protected $pages;
 
@@ -75,7 +81,7 @@ class Book
     }
 
     /**
-     * @return Page[]
+     * @return ArrayCollection
      */
     public function getPages()
     {
@@ -88,5 +94,14 @@ class Book
     public function setPages($pages)
     {
         $this->pages = $pages;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'name' => $this->getName(),
+            'cover' => $this->getCover(),
+            'pages' => ApiUtils::getPagesApiUrlFormat($this->getPages())
+        ];
     }
 }

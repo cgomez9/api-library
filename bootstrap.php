@@ -10,18 +10,17 @@ $isDevMode = true;
 $proxyDir = null;
 $cache = null;
 $useSimpleAnnotationReader = false;
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
-//$config = Setup::createYAMLMetadataConfiguration(array(__DIR__."/config/configuration.yml"), $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/app"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
 
 // database configuration parameters
 $conn = array(
-    'driver' => 'pdo_pgsql',
-    'path' => __DIR__ . '/db.pgsql',
-    'host' => '127.0.0.1',
-    'database' => 'library',
-    'user' => 'carlosgomez',
-    'password' => 'postgres',
-    'port' => '5432'
+    'driver' => 'pdo_mysql',
+    'path' => __DIR__ . '/db.mysql',
+    'host' => 'db',
+    'dbname' => 'library',
+    'user' => 'root',
+    'password' => '2456613',
+    'port' => '3306'
 );
 
 // obtaining the entity manager

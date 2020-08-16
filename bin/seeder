@@ -1,0 +1,376 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../bootstrap.php';
+
+use App\Entity\Book;
+use App\Entity\Page;
+use App\Entity\PageFormat;
+
+/* First Book */
+
+$book = new Book();
+$book->setName("Anna Karenina");
+$book->setCover("https://cdn.britannica.com/s:800x1000/82/175382-050-8B76E4A8/Greta-Garbo-Anna-Karenina-Clarence-Brown.jpg");
+$entityManager->persist($book);
+echo "Created Book: " . $book->getName() . "\n";
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 1 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 2 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 3 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 4 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+/* Second Book */
+
+$book = new Book();
+$book->setName("To Kill a Mockingbird");
+$book->setCover("https://cdn.britannica.com/s:800x1000/21/182021-050-666DB6B1/book-cover-To-Kill-a-Mockingbird-many-1961.jpg");
+$entityManager->persist($book);
+echo "Created Book: " . $book->getName() . "\n";
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 1 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 2 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 3 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 4 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+/* Third Book */
+
+$book = new Book();
+$book->setName("The Great Gatsby");
+$book->setCover("https://cdn.britannica.com/s:800x1000/47/24647-050-E6E25F22/F-Scott-Fitzgerald.jpg");
+$entityManager->persist($book);
+echo "Created Book: " . $book->getName() . "\n";
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 1 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 2 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 3 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 4 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+/* Fourth Book */
+
+$book = new Book();
+$book->setName("One Hundred Years of Solitude");
+$book->setCover("https://cdn.britannica.com/s:800x1000/03/11603-050-85A0D5EA/Gabriel-Garcia-Marquez-1982.jpg");
+$entityManager->persist($book);
+echo "Created Book: " . $book->getName() . "\n";
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 1 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 2 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 3 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
+
+$page = new Page();
+$page->setBook($book);
+$entityManager->persist($page);
+echo "Created Page 4 \n";
+
+$pageFormat1 = new PageFormat();
+$pageFormat1->setType("html");
+$pageFormat1->setPage($page);
+$pageFormat1->setContent("<body><p>This is the first page of {$book->getName()}</p></body>");
+$entityManager->persist($pageFormat1);
+echo "Created Page Format 1 \n";
+
+$pageFormat2 = new PageFormat();
+$pageFormat2->setType("plain");
+$pageFormat2->setPage($page);
+$pageFormat2->setContent("This is the first page of {$book->getName()}");
+$entityManager->persist($pageFormat2);
+echo "Created Page Format 2 \n";
+
+$entityManager->flush();
