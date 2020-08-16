@@ -6,6 +6,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
+use function PHPSTORM_META\map;
 
 /**
  * @ORM\Entity
@@ -33,7 +34,7 @@ class Book implements JsonSerializable
     /**
      * @var Page[]
      *
-     * @ORM\OneToMany(targetEntity="Page", mappedBy="book")
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="book")
      */
     protected $pages;
 
@@ -79,7 +80,7 @@ class Book implements JsonSerializable
     }
 
     /**
-     * @return Page[]
+     * @return ArrayCollection
      */
     public function getPages()
     {
@@ -96,10 +97,14 @@ class Book implements JsonSerializable
 
     public function jsonSerialize()
     {
+        $pages = array_map(function(Page $page) {
+            return $_SERVER['HTTP_HOST'] . url('page', ['id' => $page->getId()]);
+        }, $this->getPages()->toArray());
+
         return [
             'name' => $this->getName(),
             'cover' => $this->getCover(),
-            'pages' => $this->getPages()
+            'pages' => $pages
         ];
     }
 }

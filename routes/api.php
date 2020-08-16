@@ -14,7 +14,7 @@ Router::group(['prefix' => '/api'], function () {
     Router::get('/book/{id}', 'BookController@getById');
 
     // Page
-    Router::get('/page/{id}', 'PageController@getById');
+    Router::get('/page/{id}', 'PageController@getById')->name('page');
 });
 
 Router::error(function(Request $request, \Exception $exception) {
@@ -25,5 +25,4 @@ Router::error(function(Request $request, \Exception $exception) {
                 'error' => $exception->getMessage(),
             ]);
     }
-
 });
