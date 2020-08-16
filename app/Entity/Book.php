@@ -101,7 +101,7 @@ class Book implements JsonSerializable
         return [
             'name' => $this->getName(),
             'cover' => $this->getCover(),
-            'pages' => ApiUtils::getPageApiUrlFormat($this->getId(), $this->getPages())
+            'pages' => ApiUtils::getPagesApiUrlFormat($this->getPages())
         ];
     }
 }
