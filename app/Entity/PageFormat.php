@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 
+use App\Utils\ApiUtils;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 
@@ -10,7 +11,7 @@ use JsonSerializable;
  * @ORM\Entity
  * @ORM\Table(name="page_formats")
  */
-class PageFormat
+class PageFormat implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -89,5 +90,15 @@ class PageFormat
     public function setPage(Page $page): void
     {
         $this->page = $page;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'type' => $this->getType(),
+            'content' => $this->getContent(),
+            'page' => ApiUtils::getPageApiUrlFormat($this->getPage())
+        ];
     }
 }
