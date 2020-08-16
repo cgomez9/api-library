@@ -71,7 +71,7 @@ class Page implements JsonSerializable
     {
         return [
             'content' => $this->getContent(),
-            'book' => $this->getBook(),
+            'book' => $_SERVER['HTTP_HOST'] . url('book', ['id' => $this->getBook()->getId()])
         ];
     }
 }

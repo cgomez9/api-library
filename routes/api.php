@@ -11,7 +11,7 @@ use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
 Router::group(['prefix' => '/api'], function () {
     // Book
     Router::get('/book', 'BookController@getAll');
-    Router::get('/book/{id}', 'BookController@getById');
+    Router::get('/book/{id}', 'BookController@getById')->name('book');
 
     // Page
     Router::get('/page/{id}', 'PageController@getById')->name('page');
