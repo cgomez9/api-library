@@ -3,20 +3,20 @@
 namespace App\Controller;
 
 
+use App\Service\PageService;
 use App\Singleton\Container;
 use App\Entity\Page;
+use App\Entity\PageFormat;
 
 class PageController
 {
-    public function getById($id)
+    public function getById($id, $format)
     {
-        $page = $this->getPageRepository()->find($id);
-        return response()->httpCode($page ? 200 : 404)->json($page ? $page : []);
+        return PageService::getById($id, $format);
     }
 
-    private function getPageRepository()
+    public function getByBookId($bookId, $pageId, $format)
     {
-        return Container::getInstance()->getEntityManager()->getRepository(Page::class);
+        return PageService::getByBookId($bookId, $pageId, $format);
     }
-
 }
