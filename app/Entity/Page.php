@@ -31,7 +31,7 @@ class Page implements JsonSerializable
     /**
      * @var Book $book
      *
-     * @ORM\ManyToOne(targetEntity="Book", inversedBy="pages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Book", inversedBy="pages")
      * @ORM\JoinColumn(name="book_id", referencedColumnName="id")
      */
     protected $book;
