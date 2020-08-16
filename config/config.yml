@@ -1,1 +1,8 @@
 parameters:
+  driver: pdo_mysql
+  path: db.mysql
+  host: db
+  dbname: library
+  user: root
+  password: 2456613
+  port: 3306

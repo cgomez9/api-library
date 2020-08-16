@@ -2,6 +2,7 @@
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use App\Service\ConfigurationService;
 
 require_once "vendor/autoload.php";
 
@@ -14,13 +15,13 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/app"), $i
 
 // database configuration parameters
 $conn = array(
-    'driver' => 'pdo_mysql',
-    'path' => __DIR__ . '/db.mysql',
-    'host' => 'db',
-    'dbname' => 'library',
-    'user' => 'root',
-    'password' => '2456613',
-    'port' => '3306'
+    'driver' => ConfigurationService::get('driver'),
+    'path' => __DIR__ . ConfigurationService::get('path'),
+    'host' => ConfigurationService::get('host'),
+    'dbname' => ConfigurationService::get('dbname'),
+    'user' => ConfigurationService::get('user'),
+    'password' => ConfigurationService::get('password'),
+    'port' => ConfigurationService::get('port')
 );
 
 // obtaining the entity manager
