@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 
@@ -22,13 +23,6 @@ class Page implements JsonSerializable
     protected $id;
 
     /**
-     * @var string $content
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $content;
-
-    /**
      * @var Book $book
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Book", inversedBy="pages")
@@ -36,19 +30,25 @@ class Page implements JsonSerializable
      */
     protected $book;
 
+    /**
+     * @var PageFormat[]
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\PageFormat", mappedBy="page")
+     */
+    protected $pageFormats;
+
+
+    /**
+     * Page constructor.
+     */
+    public function __construct()
+    {
+        $this->pageFormats = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    public function setContent($content)
-    {
-        $this->content = $content;
     }
 
     /**
@@ -67,10 +67,25 @@ class Page implements JsonSerializable
         $this->book = $book;
     }
 
+    /**
+     * @return PageFormat[]
+     */
+    public function getPageFormats()
+    {
+        return $this->pageFormats;
+    }
+
+    /**
+     * @param PageFormat[] $pageFormats
+     */
+    public function setPageFormats(array $pageFormats)
+    {
+        $this->pageFormats = $pageFormats;
+    }
+
     public function jsonSerialize()
     {
         return [
-            'content' => $this->getContent(),
             'book' => $_SERVER['HTTP_HOST'] . url('book', ['id' => $this->getBook()->getId()])
         ];
     }
