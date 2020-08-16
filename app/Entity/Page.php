@@ -86,6 +86,7 @@ class Page implements JsonSerializable
     public function jsonSerialize()
     {
         return [
+            'id' => $this->getId(),
             'book' => $_SERVER['HTTP_HOST'] . url('book', ['id' => $this->getBook()->getId()])
         ];
     }
