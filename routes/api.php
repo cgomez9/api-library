@@ -16,7 +16,7 @@ Router::group(['prefix' => '/api'], function () {
         ->name('book');
 
     // Page
-    Router::get('/page/{id}', 'PageController@getById')
+    Router::get('/page/{id}/{format}', 'PageController@getById')
         ->where(['id' => '[0-9]+'])
         ->name('page');
     Router::get('/book/{bookId}/page/{pageId}/{format}', 'PageController@getByBookId')
