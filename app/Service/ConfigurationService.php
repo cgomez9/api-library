@@ -12,7 +12,7 @@ class ConfigurationService
 {
     public static function get($parameter) {
         try {
-            $configuration = Yaml::parseFile($_SERVER["DOCUMENT_ROOT"] . "/../config/config.yml");
+            $configuration = Yaml::parseFile(__DIR__ . "/../../config/config.yml");
             if (isset($configuration["parameters"][$parameter])) {
                 return $configuration["parameters"][$parameter];
             } else {
