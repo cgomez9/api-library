@@ -11,10 +11,17 @@ use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
 Router::group(['prefix' => '/api'], function () {
     // Book
     Router::get('/book', 'BookController@getAll');
-    Router::get('/book/{id}', 'BookController@getById')->name('book');
+    Router::get('/book/{id}', 'BookController@getById')
+        ->where(['id' => '[0-9]+'])
+        ->name('book');
 
     // Page
-    Router::get('/page/{id}', 'PageController@getById')->name('page');
+    Router::get('/page/{id}', 'PageController@getById')
+        ->where(['id' => '[0-9]+'])
+        ->name('page');
+    Router::get('/book/{bookId}/page/{pageId}/{format}', 'PageController@getByBookId')
+        ->where(['bookId' => '[0-9]+', 'pageId' => '[0-9]+'])
+        ->name('page_book');
 });
 
 Router::error(function(Request $request, \Exception $exception) {
