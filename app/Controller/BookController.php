@@ -17,7 +17,7 @@ class BookController
     public function getById($id)
     {
         $book = $this->getBookRepository()->find($id);
-        return response()->httpCode($book ? 200 : 404)->json($book);
+        return response()->httpCode($book ? 200 : 404)->json($book ? $book : []);
     }
 
     private function getBookRepository()
