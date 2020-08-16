@@ -3,26 +3,17 @@
 namespace App\Controller;
 
 
-use App\Singleton\Container;
-use App\Entity\Book;
+use App\Service\BookService;
 
 class BookController
 {
     public function getAll()
     {
-        $allBooks = $this->getBookRepository()->findAll();
-        return response()->httpCode($allBooks ? 200 : 404)->json($allBooks);
+       return BookService::getAll();
     }
 
     public function getById($id)
     {
-        $book = $this->getBookRepository()->find($id);
-        return response()->httpCode($book ? 200 : 404)->json($book ? $book : []);
+        return BookService::getById($id);
     }
-
-    private function getBookRepository()
-    {
-        return Container::getInstance()->getEntityManager()->getRepository(Book::class);
-    }
-
 }

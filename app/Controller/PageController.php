@@ -4,9 +4,6 @@ namespace App\Controller;
 
 
 use App\Service\PageService;
-use App\Singleton\Container;
-use App\Entity\Page;
-use App\Entity\PageFormat;
 
 class PageController
 {
