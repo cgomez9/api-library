@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 
+use App\Utils\ApiUtils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
@@ -87,7 +88,7 @@ class Page implements JsonSerializable
     {
         return [
             'id' => $this->getId(),
-            'book' => $_SERVER['HTTP_HOST'] . url('book', ['id' => $this->getBook()->getId()])
+            'book' => ApiUtils::getBookApiUrlFormat($this->getBook()->getId())
         ];
     }
 }

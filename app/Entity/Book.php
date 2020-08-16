@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 
+use App\Utils\ApiUtils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
@@ -97,14 +98,10 @@ class Book implements JsonSerializable
 
     public function jsonSerialize()
     {
-        $pages = array_map(function(Page $page) {
-            return $_SERVER['HTTP_HOST'] . url('page', ['id' => $page->getId()]);
-        }, $this->getPages()->toArray());
-
         return [
             'name' => $this->getName(),
             'cover' => $this->getCover(),
-            'pages' => $pages
+            'pages' => ApiUtils::getPageApiUrlFormat($this->getId(), $this->getPages())
         ];
     }
 }
